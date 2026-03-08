@@ -25,11 +25,11 @@ jobs:
       - name: Run EOI scan
         run: python scan.py
         env:
-          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GOOGLE_SHEETS_CREDS: ${{ secrets.GOOGLE_SHEETS_CREDS }}
-          GMAIL_APP_PASSWORD:  ${{ secrets.GMAIL_APP_PASSWORD }}
-          YOUR_EMAIL:          ${{ secrets.YOUR_EMAIL }}
-          SHEET_ID:            ${{ secrets.SHEET_ID }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          YOUR_EMAIL: ${{ secrets.YOUR_EMAIL }}
+          SHEET_ID: ${{ secrets.SHEET_ID }}
 
       - name: Commit updated seen_eois.json
         run: |
