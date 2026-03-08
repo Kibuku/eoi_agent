@@ -37,4 +37,4 @@ jobs:
           git config user.name "EOI Agent"
           git add seen_eois.json
           git diff --staged --quiet || git commit -m "chore: update seen EOIs [skip ci]"
-          git push
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
