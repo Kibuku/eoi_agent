@@ -1,9 +1,10 @@
-import anthropic, json, os, time, smtplib, gspread
+import anthropic, json, os, time, smtplib, gspread, requests
 from datetime import date
 from collections import deque
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from google.oauth2.service_account import Credentials
+from bs4 import BeautifulSoup
 
 EMAIL    = os.environ["YOUR_EMAIL"]
 SHEET_ID = os.environ["SHEET_ID"]
@@ -67,54 +68,70 @@ def scan_with_queue(platforms, context):
 
 #Part 3: Single platform scan
 def scan_single_platform(client, platform, context, today):
-    # For now, return mock data to test the email functionality
-    # TODO: Implement actual web search integration
-    import random
-
-    mock_opportunities = [
-        {
-            "title": f"Sample EOI from {platform}",
-            "platform": platform,
-            "category": "Development",
-            "sector": "Energy",
-            "country": "Kenya",
-            "deadline": "2026-03-15",
-            "description": "Sample opportunity for testing the EOI agent email functionality.",
-            "requirements": "Technical proposal required",
-            "link": f"https://{platform.lower().replace(' ', '')}.com/sample-eoi",
-            "urgency": random.choice(["HIGH", "MEDIUM", "LOW"])
-        }
-    ]
-
-    # Uncomment below to test with real Claude API (will return empty results since no web search)
-    """
     signals  = "\n".join(f"- {s}" for s in context.get("priority_signals", []))
     sectors  = ", ".join(context.get("priority_sectors", []))
     keywords = ", ".join(context.get("boost_keywords", []))
 
-    response = client.messages.create(
+    # Step 1: Generate search queries using Claude
+    query_response = client.messages.create(
         model   = "claude-3-5-sonnet-20241022",
-        max_tokens = 2000,
-        system  = SYSTEM_PROMPT,
+        max_tokens = 500,
+        system  = "You are a search query expert. Generate effective search queries for finding EOIs, tenders, and grants.",
         messages = [{"role": "user", "content": f"""
-            Based on your knowledge, what EOIs, tenders, RFPs, or grants might be available on {platform}?
-            Today: {today}. Focus on opportunities closing within 14 days or open/rolling.
-            Priority themes:\n{signals}
-            Sectors: {sectors}
+            Generate 3 specific search queries to find current EOIs, tenders, RFPs, and grants on {platform}.
+            Focus on African development opportunities, especially in: Kenya, Uganda, Tanzania, Ethiopia, Rwanda, Nigeria, Ghana.
+            Priority sectors: {sectors}
             Keywords: {keywords}
-            Countries: Kenya, Uganda, Tanzania, Ethiopia, Rwanda, Nigeria, Ghana.
-            Return ONLY a JSON array. Empty array [] if nothing found.
+            Return only the 3 queries as a JSON array of strings.
         """}]
     )
-    text = response.content[0].text
-    try:
-        start, end = text.index("["), text.rindex("]")
-        return json.loads(text[start:end+1])
-    except:
-        return []
-    """
 
-    return mock_opportunities if random.random() > 0.7 else []  # Return data ~30% of the time
+    try:
+        queries = json.loads(query_response.content[0].text.strip())
+    except:
+        queries = [f"EOI tenders grants {platform} Africa", f"development opportunities {platform}", f"funding calls {platform}"]
+
+    opportunities = []
+
+    # Step 2: Search the web for each query
+    for query in queries[:2]:  # Limit to 2 queries to avoid rate limits
+        try:
+            # Use DuckDuckGo instant answers API (free)
+            search_url = f"https://api.duckduckgo.com/?q={query}&format=json&no_html=1"
+            response = requests.get(search_url, timeout=10)
+            data = response.json()
+
+            # Extract relevant information
+            if 'AbstractText' in data and data['AbstractText']:
+                # Use Claude to parse and format the search results
+                parse_response = client.messages.create(
+                    model   = "claude-3-5-sonnet-20241022",
+                    max_tokens = 1000,
+                    system  = SYSTEM_PROMPT,
+                    messages = [{"role": "user", "content": f"""
+                        Based on this search result from {platform}, extract any EOIs, tenders, or grants mentioned.
+                        Search result: {data.get('AbstractText', '')}
+                        Related topics: {data.get('RelatedTopics', [])}
+                        Today: {today}
+                        Return ONLY a JSON array of opportunities found, or empty array [].
+                    """}]
+                )
+
+                text = parse_response.content[0].text
+                try:
+                    start, end = text.index("["), text.rindex("]")
+                    batch = json.loads(text[start:end+1])
+                    opportunities.extend(batch)
+                except:
+                    pass
+
+        except Exception as e:
+            print(f"  Search failed for query '{query}': {e}")
+            continue
+
+        time.sleep(2)  # Rate limiting
+
+    return opportunities
 
 #Part 4: Google Sheets writer
 def update_sheet(new_eois):
