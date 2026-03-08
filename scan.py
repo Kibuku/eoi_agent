@@ -189,3 +189,19 @@ if __name__ == "__main__":
         save_seen(seen)
     else:
         print("No new EOIs this scan.")
+
+#    if __name__ == "__main__":
+#     test_eois = [{
+#         "title": "Test EOI - Solar Mini-grid Development Kenya",
+#         "platform": "endev",
+#         "category": "Grant",
+#         "sector": "Solar Energy",
+#         "country": "Kenya",
+#         "deadline": "March 15, 2026",
+#         "urgency": "HIGH",
+#         "description": "This is a test opportunity to verify email and Sheets are working.",
+#         "requirements": "Open to consulting firms in East Africa.",
+#         "link": "https://endev.info/calls"
+#     }]
+#     update_sheet(test_eois)
+#     send_email(test_eois)
