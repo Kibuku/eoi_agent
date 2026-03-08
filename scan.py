@@ -1,10 +1,9 @@
-import anthropic, json, os, time, smtplib, gspread, requests
+import anthropic, json, os, time, smtplib, gspread
 from datetime import date
 from collections import deque
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from google.oauth2.service_account import Credentials
-from bs4 import BeautifulSoup
 
 EMAIL    = os.environ["YOUR_EMAIL"]
 SHEET_ID = os.environ["SHEET_ID"]
@@ -72,66 +71,27 @@ def scan_single_platform(client, platform, context, today):
     sectors  = ", ".join(context.get("priority_sectors", []))
     keywords = ", ".join(context.get("boost_keywords", []))
 
-    # Step 1: Generate search queries using Claude
-    query_response = client.messages.create(
-        model   = "claude-3-5-sonnet-20241022",
-        max_tokens = 500,
-        system  = "You are a search query expert. Generate effective search queries for finding EOIs, tenders, and grants.",
+    response = client.messages.create(
+        model   = "claude-sonnet-4-5",
+        max_tokens = 2000,
+        system  = SYSTEM_PROMPT,
+        tools   = [{"type": "web_search_20250305", "name": "web_search"}],
         messages = [{"role": "user", "content": f"""
-            Generate 3 specific search queries to find current EOIs, tenders, RFPs, and grants on {platform}.
-            Focus on African development opportunities, especially in: Kenya, Uganda, Tanzania, Ethiopia, Rwanda, Nigeria, Ghana.
-            Priority sectors: {sectors}
+            Search {platform} for open EOIs, tenders, RFPs, grants.
+            Today: {today}. Find opportunities closing within 14 days or open/rolling.
+            Priority themes:\n{signals}
+            Sectors: {sectors}
             Keywords: {keywords}
-            Return only the 3 queries as a JSON array of strings.
+            Countries: Kenya, Uganda, Tanzania, Ethiopia, Rwanda, Nigeria, Ghana.
+            Return ONLY a JSON array. Empty array [] if nothing found.
         """}]
     )
-
+    text = " ".join(b.text for b in response.content if b.type == "text")
     try:
-        queries = json.loads(query_response.content[0].text.strip())
+        start, end = text.index("["), text.rindex("]")
+        return json.loads(text[start:end+1])
     except:
-        queries = [f"EOI tenders grants {platform} Africa", f"development opportunities {platform}", f"funding calls {platform}"]
-
-    opportunities = []
-
-    # Step 2: Search the web for each query
-    for query in queries[:2]:  # Limit to 2 queries to avoid rate limits
-        try:
-            # Use DuckDuckGo instant answers API (free)
-            search_url = f"https://api.duckduckgo.com/?q={query}&format=json&no_html=1"
-            response = requests.get(search_url, timeout=10)
-            data = response.json()
-
-            # Extract relevant information
-            if 'AbstractText' in data and data['AbstractText']:
-                # Use Claude to parse and format the search results
-                parse_response = client.messages.create(
-                    model   = "claude-3-5-sonnet-20241022",
-                    max_tokens = 1000,
-                    system  = SYSTEM_PROMPT,
-                    messages = [{"role": "user", "content": f"""
-                        Based on this search result from {platform}, extract any EOIs, tenders, or grants mentioned.
-                        Search result: {data.get('AbstractText', '')}
-                        Related topics: {data.get('RelatedTopics', [])}
-                        Today: {today}
-                        Return ONLY a JSON array of opportunities found, or empty array [].
-                    """}]
-                )
-
-                text = parse_response.content[0].text
-                try:
-                    start, end = text.index("["), text.rindex("]")
-                    batch = json.loads(text[start:end+1])
-                    opportunities.extend(batch)
-                except:
-                    pass
-
-        except Exception as e:
-            print(f"  Search failed for query '{query}': {e}")
-            continue
-
-        time.sleep(2)  # Rate limiting
-
-    return opportunities
+        return []
 
 #Part 4: Google Sheets writer
 def update_sheet(new_eois):
