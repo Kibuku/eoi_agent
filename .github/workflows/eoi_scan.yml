@@ -1,0 +1,40 @@
+name: EOI Weekly Scan
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run EOI scan
+        run: python scan.py
+        env:
+          ANTHROPIC_API_KEY:   ${{ secrets.ANTHROPIC_API_KEY }}
+          GOOGLE_SHEETS_CREDS: ${{ secrets.GOOGLE_SHEETS_CREDS }}
+          GMAIL_APP_PASSWORD:  ${{ secrets.GMAIL_APP_PASSWORD }}
+          YOUR_EMAIL:          ${{ secrets.YOUR_EMAIL }}
+          SHEET_ID:            ${{ secrets.SHEET_ID }}
+
+      - name: Commit updated seen_eois.json
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "EOI Agent"
+          git add seen_eois.json
+          git diff --staged --quiet || git commit -m "chore: update seen EOIs [skip ci]"
+          git push
