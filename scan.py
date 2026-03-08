@@ -40,7 +40,7 @@ def scan_with_queue(platforms, context):
         except Exception as e:
             print(f"  ✗ Failed: {e} — queued for retry\n")
             failed.append(platform)
-        time.sleep(1)   # avoid rate limits
+        time.sleep(15)   # wait 15 seconds between platforms
 
     # ── RETRY PASS ────────────────────────────────────
     if failed:
@@ -53,7 +53,7 @@ def scan_with_queue(platforms, context):
                 print(f"  ✓ Recovered — {len(batch)} opportunities\n")
             except Exception as e:
                 print(f"  ✗ Permanently failed: {e}\n")
-            time.sleep(1)
+            time.sleep(15)  # wait 15 seconds between platforms
 
     # ── SUMMARY ───────────────────────────────────────
     high = sum(1 for r in results if r.get('urgency') == 'HIGH')
