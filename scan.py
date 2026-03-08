@@ -173,21 +173,18 @@ def save_seen(seen):
     with open("seen_eois.json", "w") as f: json.dump(list(seen), f)
 
 if __name__ == "__main__":
-    with open("platforms.json") as f: platforms = json.load(f)
-    with open("context.json")   as f: context   = json.load(f)
-
-    seen     = load_seen()
-    all_eois = scan_with_queue(platforms, context)
-    new_eois = [e for e in all_eois if e.get("title") not in seen]
-
-    print(f"Found {len(all_eois)} total, {len(new_eois)} new")
-
-    if new_eois:
-        update_sheet(new_eois)
-        send_email(new_eois)
-        seen.update(e["title"] for e in new_eois if "title" in e)
-        save_seen(seen)
-    else:
-        print("No new EOIs this scan.")
-
-
+    # TEMPORARY: bypass scan to test email and Sheets only
+    test_eois = [{
+        "title": "Test EOI - Solar Mini-grid Development Kenya",
+        "platform": "endev",
+        "category": "Grant",
+        "sector": "Solar Energy",
+        "country": "Kenya",
+        "deadline": "March 15, 2026",
+        "urgency": "HIGH",
+        "description": "This is a test opportunity to verify email and Sheets are working.",
+        "requirements": "Open to consulting firms in East Africa.",
+        "link": "https://endev.info/calls"
+    }]
+    update_sheet(test_eois)
+    send_email(test_eois)
