@@ -190,7 +190,7 @@ def save_seen(seen):
 #     else:
 #         print("No new EOIs this scan.")
 
-   if __name__ == "__main__":
+if __name__ == "__main__":
     test_eois = [{
         "title": "Test EOI - Solar Mini-grid Development Kenya",
         "platform": "endev",
