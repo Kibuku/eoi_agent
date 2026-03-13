@@ -204,4 +204,8 @@ if __name__ == "__main__":
 #         "link": "https://endev.info/calls"
 #     }]
 #     update_sheet(test_eois)
+<<<<<<< HEAD
 #     send_email(test_eois)
+=======
+#     send_email(test_eois)
+>>>>>>> 5efa80ff2bd409c4a830ed318877568a1a294ed1
