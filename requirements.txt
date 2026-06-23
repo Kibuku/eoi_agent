@@ -1,4 +1,5 @@
 anthropic
+python-dotenv
 gspread
 google-auth
 google-auth-oauthlib

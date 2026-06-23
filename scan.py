@@ -4,6 +4,9 @@ from collections import deque
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from google.oauth2.service_account import Credentials
+from dotenv import load_dotenv
+
+load_dotenv()
 
 EMAIL    = os.environ["YOUR_EMAIL"]
 SHEET_ID = os.environ["SHEET_ID"]
@@ -72,7 +75,7 @@ def scan_single_platform(client, platform, context, today):
     keywords = ", ".join(context.get("boost_keywords", []))
 
     response = client.messages.create(
-        model   = "claude-sonnet-4-5",
+        model   = "claude-sonnet-4-6",
         max_tokens = 1000,
         system  = SYSTEM_PROMPT,
         tools   = [{"type": "web_search_20250305", "name": "web_search"}],
@@ -204,8 +207,4 @@ if __name__ == "__main__":
 #         "link": "https://endev.info/calls"
 #     }]
 #     update_sheet(test_eois)
-<<<<<<< HEAD
 #     send_email(test_eois)
-=======
-#     send_email(test_eois)
->>>>>>> 5efa80ff2bd409c4a830ed318877568a1a294ed1

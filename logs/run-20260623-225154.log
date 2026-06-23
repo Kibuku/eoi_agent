@@ -1,0 +1,167 @@
+/Users/georgekibuku/Documents/eoi_agent/.venv/lib/python3.9/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/georgekibuku/Documents/eoi_agent/.venv/lib/python3.9/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/georgekibuku/Documents/eoi_agent/.venv/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+
+──────────────────────────────────────────────────
+  EOI AGENT — QUEUE SCAN
+  27 platforms in queue | June 23, 2026
+──────────────────────────────────────────────────
+
+[1/27] Scanning: Development Aid (developmentaid.org)
+  ✓ Found 0 opportunities
+
+[2/27] Scanning: Devex (devex.com)
+  ✓ Found 0 opportunities
+
+[3/27] Scanning: World Bank (projects.worldbank.org)
+  ✓ Found 0 opportunities
+
+[4/27] Scanning: AfDB (afdb.org/en/projects-and-operations/procurement)
+  ✓ Found 0 opportunities
+
+[5/27] Scanning: EU Funding Portal (ec.europa.eu/info/funding-tenders)
+  ✓ Found 0 opportunities
+
+[6/27] Scanning: FCDO (gov.uk/international-development-funding)
+  ✓ Found 0 opportunities
+
+[7/27] Scanning: GIZ (ausschreibungen.giz.de)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnPCiqRWPZ5CUKTGpW2'} — queued for retry
+
+[8/27] Scanning: UNDP Africa (undp.org/africa/procurement)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnQMJnsrgkZXWkBq322'} — queued for retry
+
+[9/27] Scanning: CLASP (clasp.ngo/rfps)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnRViqb2fuEe8tCFJTQ'} — queued for retry
+
+[10/27] Scanning: endev (endev.info/calls)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnSdHHSiRXnkx8MXrNb'} — queued for retry
+
+[11/27] Scanning: GSMA M4D (gsma.com/mobile-for-development)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnTkxvgM1b2mkWVt3gZ'} — queued for retry
+
+[12/27] Scanning: EEP Africa (eepafrica.org/financing)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnUtgo1x6oXhuaAur8q'} — queued for retry
+
+[13/27] Scanning: IDRC (idrc-crdi.ca/en/funding)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnW2NS1MRgGzoGLA6KR'} — queued for retry
+
+[14/27] Scanning: SE4ALL (seforall.org/procurement-opportunities)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnXAB1npXzFkQySkEiF'} — queued for retry
+
+[15/27] Scanning: Innovate UK (iuk-business-connect.org.uk/opportunities)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnYJCEqjjydbSTDkmVR'} — queued for retry
+
+[16/27] Scanning: FSD Africa (fsdafrica.org/procurement)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnZSBVPY8QgXjxwkAyX'} — queued for retry
+
+[17/27] Scanning: MECS (mecs.org.uk/category/tender)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnaZxpryPuC7SaiFpys'} — queued for retry
+
+[18/27] Scanning: CCAC (ccacoalition.org/content/calls-proposals)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnbhiwBMyh3WKuWN4KW'} — queued for retry
+
+[19/27] Scanning: WRI Procurement (world-resources-institute.public-portal.us.workdayspend.com)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLncqqs2vpiZp4CcQ5ag'} — queued for retry
+
+[20/27] Scanning: Africa-Europe Innovation (africaeuropeinnovation.net/funding-opportunities)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLndytL1sCXTgRjJDv21'} — queued for retry
+
+[21/27] Scanning: PPIP Kenya (tenders.go.ke/tenders)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnf7XVE6qNJ69oVbGAC'} — queued for retry
+
+[22/27] Scanning: Kenya Tenders (kenyatenders.com)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLngF6gS7zbn85EUf2w4'} — queued for retry
+
+[23/27] Scanning: Global Tenders (globaltenders.com)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnhNvkZsS6N3UeEbRCa'} — queued for retry
+
+[24/27] Scanning: AFD (afd.fr/en/calls-for-projects)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLniYKacDvWyHbe17Va3'} — queued for retry
+
+[25/27] Scanning: UNIDO (unido.org/get-involved/procurement)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnjgBPLkbgiwdbdiyrP'} — queued for retry
+
+[26/27] Scanning: Green Climate Fund (greenclimate.fund/projects/funding-proposals)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnkp7QhGfzMX2JNC6vj'} — queued for retry
+
+[27/27] Scanning: fundsforNGOs (fundsforngos.org)
+  ✗ Failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnmwiq7sC2AAZxd8ofA'} — queued for retry
+
+
+  RETRY PASS — 21 failed platforms
+
+  Retrying: GIZ (ausschreibungen.giz.de)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLno5sVdvoh9YoXGug8W'}
+
+  Retrying: UNDP Africa (undp.org/africa/procurement)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnpDURRNMBSrvMmmsFf'}
+
+  Retrying: CLASP (clasp.ngo/rfps)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnqMJFPfz4BqZbeswM2'}
+
+  Retrying: endev (endev.info/calls)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnrVCXp5xus7Pjn28Z4'}
+
+  Retrying: GSMA M4D (gsma.com/mobile-for-development)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnsdRArr9T9eo2a8B4W'}
+
+  Retrying: EEP Africa (eepafrica.org/financing)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLntmdJgBKJCryz9RYam'}
+
+  Retrying: IDRC (idrc-crdi.ca/en/funding)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnuwqFfV5hraCdF2KrT'}
+
+  Retrying: SE4ALL (seforall.org/procurement-opportunities)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnw6FYKzKUwZGWDhAbX'}
+
+  Retrying: Innovate UK (iuk-business-connect.org.uk/opportunities)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnxEVQuMTD4aGhxonVS'}
+
+  Retrying: FSD Africa (fsdafrica.org/procurement)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnyN7aZ26qFh84WqHPo'}
+
+  Retrying: MECS (mecs.org.uk/category/tender)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLnzWEGSu3LcCLuLPuV8'}
+
+  Retrying: CCAC (ccacoalition.org/content/calls-proposals)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo1dsBQ97YjAi9tW5wL'}
+
+  Retrying: WRI Procurement (world-resources-institute.public-portal.us.workdayspend.com)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo2n26YSYM4KAg7KTHZ'}
+
+  Retrying: Africa-Europe Innovation (africaeuropeinnovation.net/funding-opportunities)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo3vYLGRJz4QbFtkJer'}
+
+  Retrying: PPIP Kenya (tenders.go.ke/tenders)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo54f1vZhokukbB1C97'}
+
+  Retrying: Kenya Tenders (kenyatenders.com)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo6CHBhwoYACUo4NfBo'}
+
+  Retrying: Global Tenders (globaltenders.com)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo7Kz4qvCKvAiGp1wqs'}
+
+  Retrying: AFD (afd.fr/en/calls-for-projects)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo8TrN488DAWFeTN4Kx'}
+
+  Retrying: UNIDO (unido.org/get-involved/procurement)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLo9bciHQ2fxXNkHezkf'}
+
+  Retrying: Green Climate Fund (greenclimate.fund/projects/funding-proposals)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLoAjK6ZRyB4CxvHznc8'}
+
+  Retrying: fundsforNGOs (fundsforngos.org)
+  ✗ Permanently failed: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CcLoBscwNXh4JHqudLwzU'}
+
+
+──────────────────────────────────────────────────
+  SCAN COMPLETE
+  Total : 0 | HIGH: 0 | MED: 0 | LOW: 0
+──────────────────────────────────────────────────
+
+Found 0 total, 0 new
+No new EOIs this scan.
